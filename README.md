@@ -713,8 +713,10 @@ wire [11:0] execaddd; wire [15:0] dataAoutd; wire [15:0] dataBoutd; wire [31:0] 
 wire [31:0] currdat; wire [31:0] outDMd; wire [31:0] dataCoutd;  
 wire zad, zbd, eqd, gtd, ltd;  
 instmem 	a1 (.clk(clk), .we_IM(we_IM), .dataIM(codein), .addIM(curradd), .outIM(outIMd));   
-insReg 		a2 (.clk(clk), .loadIR(loadIRd), .insin(outIMd), .address(addressd), .opcode(opcodeD));    
+insReg 		a2 (.clk(clk), .loadIR(loadIRd), .insin(outIMd), .address(addressd), .opcode(opcodeD)); 
+   
 controller 	a3 (.clk(clk), .en(en), .opcode(opcodeD), .loadA(loadAd), .loadB(loadBd), .loadC(loadCd), .loadIR(loadIRd), .loadPC(loadPCd), .incPC(incPCd), .mode(moded), .we_DM(we_DMd), .selA(selAd), .selB(selBd));   
+
 PC 		a4 (.clk(clk), .loadPC(loadPCd), .incPC(incPCd), .address(addressd), .execadd(execaddd));   
 muxB		a5 (.clk(clk), .in1(execaddd), .in2(immd), .sel(selBd), .outB(curradd));  
 regA 		a6 (.clk(clk), .loadA(loadAd), .dataAin(outDMd[15:0]), .dataAout(dataAoutd));  
