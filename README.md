@@ -53,10 +53,14 @@ In execute state, we provide the function required by the USER based in the Inst
 ## CODE for Design
 
 ## ALU
+
 /////////////////////////////////////////////////////////////////////
 //	This describes the ALU of the design			////
 ////////////////////////////////////////////////////////////////////
-
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+use ieee.std_logic_arith.all;
 module ALU( a, b, opcode, mode, outALU, za, zb, eq, gt, lt);
 input [15:0] a;
 input [15:0] b;
